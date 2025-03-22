@@ -1,14 +1,22 @@
 <script setup>
 import { ref } from "vue";
+import TaskItem from "./TaskItem.vue"; // Import component con
 
 const newTask = ref("");
 const tasks = ref([]);
+const errorMessage = ref(""); // Biến lưu thông báo lỗi
 
 const addTask = () => {
-  if (newTask.value.trim() !== "") {
-    tasks.value.push({ text: newTask.value, completed: false });
-    newTask.value = "";
+  if (newTask.value.trim() === "") {
+    errorMessage.value = "Vui lòng nhập công việc! 🚨";
+    setTimeout(() => {
+      errorMessage.value = ""; // Ẩn thông báo sau 3 giây
+    }, 3000);
+    return;
   }
+
+  tasks.value.push({ text: newTask.value, completed: false });
+  newTask.value = "";
 };
 
 const toggleTask = (index) => {
@@ -21,8 +29,14 @@ const removeTask = (index) => {
 </script>
 
 <template>
-  <div class="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+  <div class="w-3/6 mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
     <h1 class="text-xl font-bold mb-4">To-Do List</h1>
+
+    <!-- Hiển thị thông báo lỗi -->
+    <p v-if="errorMessage" class="text-red-500 text-sm mb-2">
+      {{ errorMessage }}
+    </p>
+
     <div class="flex mb-4">
       <input
         v-model="newTask"
@@ -37,34 +51,51 @@ const removeTask = (index) => {
         Thêm
       </button>
     </div>
-    <ul>
-      <li
-        v-for="(task, index) in tasks"
-        :key="index"
-        class="flex justify-between items-center p-2 border-b"
-      >
-        <span
-          class="text-2xl"
-          :class="{ 'line-through text-gray-500': task.completed }"
+
+    <!-- Table -->
+    <table class="w-full border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border p-2">#</th>
+          <th class="border p-2">Công việc</th>
+          <th class="border p-2">Trạng thái</th>
+          <th class="border p-2">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(task, index) in tasks"
+          :key="index"
+          class="hover:bg-gray-100"
         >
-          {{ task.text }}
-        </span>
-        <div>
-          <button
-            @click="toggleTask(index)"
-            class="mr-2 text-green-500 hover:text-green-700"
-          >
-            ✔
-          </button>
-          <button
-            @click="removeTask(index)"
-            class="text-red-500 hover:text-red-700"
-          >
-            ✖
-          </button>
-        </div>
-      </li>
-    </ul>
+          <td class="border p-2 text-center">{{ index + 1 }}</td>
+          <td class="border p-2">{{ task.text }}</td>
+          <td class="border p-2 text-center">
+            <span
+              :class="task.completed ? 'text-green-600' : 'text-red-500'"
+              class="font-semibold"
+            >
+              {{ task.completed ? "Hoàn thành" : "Chưa hoàn thành" }}
+            </span>
+          </td>
+          <td class="border p-2 text-center">
+            <button
+              @click="toggleTask(index)"
+              class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 mr-2"
+            >
+              Đổi trạng thái
+            </button>
+            <button
+              @click="removeTask(index)"
+              class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+            >
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     <div class="flex justify-evenly">
       <button
         @click="$router.push('/home')"

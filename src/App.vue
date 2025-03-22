@@ -1,5 +1,8 @@
+<script setup>
+import HeaderHome from "./components/Header.vue";
+</script>
+
 <template>
-  <div>
-    <router-view />
-  </div>
+  <HeaderHome />
+  <router-view />
 </template>
