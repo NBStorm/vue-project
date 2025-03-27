@@ -42,10 +42,17 @@ button:hover {
       >
         Expense Tracker
       </button>
+      <button
+          @click="$router.push('/moviedb')"
+          class="px-6 py-3 bg-cyan-500 text-white rounded-xl text-lg shadow-md"
+      >
+        MovieDB
+      </button>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+</script>
 
 <style scoped></style>

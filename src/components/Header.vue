@@ -45,7 +45,16 @@
             >Expense Tracker</router-link
           >
         </li>
+        <li>
+          <router-link
+              to="/movieDB"
+              class="hover:text-blue-600 transition duration-300"
+          >Movie App</router-link
+          >
+        </li>
       </ul>
     </div>
   </header>
 </template>
+<script setup>
+</script>
