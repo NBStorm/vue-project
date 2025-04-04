@@ -7,6 +7,7 @@ import BT2 from "@/components/BTW2.vue";
 import NoteApp from "@/components/NoteApp.vue";
 import ProductList from "@/components/ProductList.vue";
 import ExpenseTracker from "@/components/ExpenseTracker.vue";
+import MovieSearch from "@/components/MovieSearch.vue";
 
 const routes = [
   { path: "/", redirect: "/home" },
@@ -17,6 +18,7 @@ const routes = [
   { path: "/noteApp", component: NoteApp },
   { path: "/productList", component: ProductList },
   { path: "/expenseTracker", component: ExpenseTracker },
+  { path: "/movieSearch", component: MovieSearch },
 ];
 
 const router = createRouter({

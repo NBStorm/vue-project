@@ -19,30 +19,37 @@
         </li>
         <li>
           <router-link
-            to="/noteapp"
+            to="/noteApp"
             class="hover:text-blue-600 transition duration-300"
             >Notes</router-link
           >
         </li>
         <li>
           <router-link
-            to="/todolist"
+            to="/toDoList"
             class="hover:text-blue-600 transition duration-300"
             >To Do List</router-link
           >
         </li>
         <li>
           <router-link
-            to="/productlist"
+            to="/productList"
             class="hover:text-blue-600 transition duration-300"
             >Product List</router-link
           >
         </li>
         <li>
           <router-link
-            to="/expensetracker"
+            to="/expenseTracker"
             class="hover:text-blue-600 transition duration-300"
             >Expense Tracker</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/movieSearch"
+            class="hover:text-blue-600 transition duration-300"
+            >Movie Search</router-link
           >
         </li>
       </ul>
