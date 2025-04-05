@@ -1,22 +1,47 @@
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 export const useThemeStore = defineStore("theme", () => {
-  const darkMode = ref(JSON.parse(localStorage.getItem("darkMode")) ?? false);
+  const isDark = ref(false);
 
-  const toggleTheme = () => {
-    darkMode.value = !darkMode.value;
+  // Khởi tạo theme
+  const initTheme = () => {
+    try {
+      // Kiểm tra localStorage
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        isDark.value = savedTheme === "dark";
+      } else {
+        // Nếu không có localStorage, dùng system preference
+        isDark.value = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+      }
+      updateTheme();
+    } catch (error) {
+      console.error("Error initializing theme:", error);
+    }
   };
 
-  // Cập nhật class cho root element & localStorage khi darkMode thay đổi
-  watch(
-    darkMode,
-    (newVal) => {
-      localStorage.setItem("darkMode", JSON.stringify(newVal));
-      document.documentElement.classList.toggle("dark", newVal);
-    },
-    { immediate: true }
-  );
+  const toggleDark = () => {
+    isDark.value = !isDark.value;
+    updateTheme();
+  };
 
-  return { darkMode, toggleTheme };
+  const updateTheme = () => {
+    try {
+      document.documentElement.classList.toggle("dark", isDark.value);
+      localStorage.setItem("theme", isDark.value ? "dark" : "light");
+    } catch (error) {
+      console.error("Error updating theme:", error);
+    }
+  };
+
+  // Khởi tạo theme ngay khi store được tạo
+  initTheme();
+
+  return {
+    isDark,
+    toggleDark,
+  };
 });

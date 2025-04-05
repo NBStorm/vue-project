@@ -1,9 +1,9 @@
-/* Light theme mặc định */
-body {
+@import "tailwindcss"
+" /* Light theme mặc định */ body {
   background: white;
   color: #333;
   transition: all 0.3s;
-}
+} 
 
 /* Dark theme */
 .dark body {

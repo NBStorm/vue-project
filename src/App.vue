@@ -1,10 +1,9 @@
 <script setup>
 import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
-import { useThemeStore } from "@/stores/themeStore";
 import HeaderHome from "@/components/Header.vue";
+import { useThemeStore } from "@/stores/themeStore";
 
-// Khởi tạo theme khi app mount
-useThemeStore();
+const themeStore = useThemeStore();
 </script>
 
 <template>
