@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import NoteItem from "./NoteItem.vue";
+import NoteItem from "../components/NoteItem.vue";
 
 const newTitle = ref("");
 const newContent = ref("");

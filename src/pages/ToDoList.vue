@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import TaskItem from "./TaskItem.vue"; // Import component con
+import TaskItem from "../components/TaskItem.vue"; // Import component con
 
 const newTask = ref("");
 const tasks = ref([]);

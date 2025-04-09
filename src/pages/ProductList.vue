@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import ProductItem from "./ProductItem.vue";
+import ProductItem from "../components/ProductItem.vue";
 import axios from 'axios'
 
 const products = ref([]);

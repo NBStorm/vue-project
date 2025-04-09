@@ -1,14 +1,14 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/components/Home.vue";
-import ToDoList from "@/components/ToDoList.vue";
-import AppDemSo from "@/components/AppDemSo.vue";
-import BT2 from "@/components/BTW2.vue";
-import NoteApp from "@/components/NoteApp.vue";
-import ProductList from "@/components/ProductList.vue";
-import ExpenseTracker from "@/components/ExpenseTracker.vue";
-import MovieSearch from "@/components/MovieSearch.vue";
-
+import ToDoList from "@/pages/ToDoList.vue";
+import AppDemSo from "@/pages/AppDemSo.vue";
+import BT2 from "@/pages/BTW2.vue";
+import NoteApp from "@/pages/NoteApp.vue";
+import ProductList from "@/pages/ProductList.vue";
+import ExpenseTracker from "@/pages/ExpenseTracker.vue";
+import MovieSearch from "@/pages/MovieSearch.vue";
+import UserManager from "@/pages/UserManager.vue";
 const routes = [
   { path: "/", redirect: "/home" },
   { path: "/appDemSo", component: AppDemSo },
@@ -19,6 +19,7 @@ const routes = [
   { path: "/productList", component: ProductList },
   { path: "/expenseTracker", component: ExpenseTracker },
   { path: "/movieSearch", component: MovieSearch },
+  { path: "/userManager", component: UserManager },
 ];
 
 const router = createRouter({
