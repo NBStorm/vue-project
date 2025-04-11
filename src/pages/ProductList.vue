@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import ProductItem from "../components/ProductItem.vue";
-import axios from 'axios'
+import axios from "axios";
 
 const products = ref([]);
 const searchContent = ref("");
@@ -14,8 +14,8 @@ onMounted(async () => {
     // const response = await fetch("https://fakestoreapi.com/products");
     // products.value = await response.json();
     // console.log(products);
-    const response = await axios.get('https://fakestoreapi.com/products')
-    products.value = response.data
+    const response = await axios.get("https://fakestoreapi.com/products");
+    products.value = response.data;
   } catch (error) {
     console.error("Lỗi khi fetch API:", error);
   }
@@ -41,9 +41,9 @@ const resetFilters = () => {
 </script>
 
 <template>
-    <div
-      class="w-full max-w-7xl mx-auto bg-white shadow-2xl rounded-2xl mt-10 p-6 h-fit"
-    >
+  <div
+    class="w-full max-w-7xl mx-auto bg-white shadow-2xl rounded-2xl mt-10 p-6 h-fit"
+  >
     <h1 class="text-3xl font-bold mb-3 text-gray-800 text-center">
       Danh sách sản phẩm
     </h1>
@@ -52,23 +52,6 @@ const resetFilters = () => {
       <!-- Cột Form (1/3) -->
       <div class="w-1/4 bg-white p-6 rounded-lg shadow h-fit">
         <h2 class="text-2xl text-teal-300 text-center mb-2">Search</h2>
-        <!-- <input
-          type="text"
-          v-model="searchContent"
-          placeholder="Tìm kiếm...."
-          class="w-full p-2 border rounded-lg mb-2 mt-2"
-        />
-        <input
-          type="text"
-          v-model="count"
-          placeholder="Số lượng...."
-          class="w-full p-2 border rounded-lg mb-2 mt-2"
-        />
-        <button
-          class="mt-2 w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        >
-          Tìm kiếm
-        </button> -->
 
         <!-- Thanh tìm kiếm -->
         <div class="relative flex items-center border rounded-lg p-2 w-full">

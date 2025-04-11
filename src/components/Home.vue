@@ -12,7 +12,7 @@
     <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
       Chọn một tính năng để bắt đầu
     </p>
-    <div class="flex justify-center gap-6">
+    <div class="flex justify-center gap-6 mb-6">
       <button
         @click="$router.push('/appDemSo')"
         class="px-6 py-3 bg-blue-500 dark:bg-blue-600 text-white rounded-xl text-lg shadow-md hover:opacity-80 transition-opacity"
@@ -37,6 +37,8 @@
       >
         Note App
       </button>
+    </div>
+    <div class="flex justify-center gap-6">
       <button
         @click="$router.push('/expenseTracker')"
         class="px-6 py-3 bg-cyan-500 dark:bg-cyan-600 text-white rounded-xl text-lg shadow-md hover:opacity-80 transition-opacity"
@@ -48,6 +50,12 @@
         class="px-6 py-3 bg-amber-500 dark:bg-amber-600 text-white rounded-xl text-lg shadow-md hover:opacity-80 transition-opacity"
       >
         Movie Search
+      </button>
+      <button
+        @click="$router.push('/userManager')"
+        class="px-6 py-3 bg-amber-700 dark:bg-amber-800 text-white rounded-xl text-lg shadow-md hover:opacity-80 transition-opacity"
+      >
+        User Manager
       </button>
     </div>
   </div>

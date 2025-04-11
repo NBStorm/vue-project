@@ -9,6 +9,8 @@ import ProductList from "@/pages/ProductList.vue";
 import ExpenseTracker from "@/pages/ExpenseTracker.vue";
 import MovieSearch from "@/pages/MovieSearch.vue";
 import UserManager from "@/pages/UserManager.vue";
+import BlogApp from "@/pages/BlogApp.vue";
+import BlogDetail from "@/pages/BlogDetail.vue";  
 const routes = [
   { path: "/", redirect: "/home" },
   { path: "/appDemSo", component: AppDemSo },
@@ -20,6 +22,17 @@ const routes = [
   { path: "/expenseTracker", component: ExpenseTracker },
   { path: "/movieSearch", component: MovieSearch },
   { path: "/userManager", component: UserManager },
+  {
+    path: "/blogApp",
+    name: "Blogs",
+    component: BlogApp,
+  },
+  {
+    path: "/blog/:id",
+    name: "BlogDetail",
+    component: BlogDetail,
+    props: true,
+  },
 ];
 
 const router = createRouter({

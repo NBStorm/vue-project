@@ -2,7 +2,7 @@
   <div
     class="w-full max-w-7xl mx-auto bg-gray-900 text-white shadow-2xl rounded-2xl mt-10 p-6 h-fit dark:bg-white"
   >
-    <h1 class="text-3xl font-bold text-center mb-6">Movie Search</h1>
+    <h1 class="text-3xl font-bold text-center mb-6 dark:text-black">Movie Search</h1>
 
     <div class="flex justify-center mb-6">
       <input
