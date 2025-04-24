@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { useThemeStore } from '@/store/theme'; // Đảm bảo đường dẫn đúng
+import { useThemeStore } from '../theme.js'; // Đảm bảo đường dẫn đúng
 
 export default {
   setup() {

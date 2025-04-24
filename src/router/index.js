@@ -24,11 +24,36 @@ const routes = [
   { path: "/productList", component: ProductList },
   { path: "/expenseTracker", component: ExpenseTracker },
   { path: "/moviedb",component: MovieApp},
-  { path: '/users', component: UserList },
-  { path: '/users/:email', component: UserDetails },
+  { path: '/users',
+    component: UserList,
+    children: [
+      {
+        path: '',
+        component: UserList,
+      },
+      {// Đường dẫn con mặc định
+        path: ':email', // Đường dẫn con có tham số email
+        component: UserDetails,
+        props: true // Truyền tham số route dưới dạng props cho component
+      }
+    ]
+  },
+
   { path:'/theme',component: Theme},
-  { path:'/post',component: PostList},
-  { path:'/post/:id',component: PostDetail},
+  { path: '/post',
+    component: PostList,
+    children: [
+      {
+        path: '',
+        component: PostList,
+      },
+      {// Đường dẫn con mặc định
+        path: ':id', // Đường dẫn con có tham số email
+        component: PostDetail,
+        props: true // Truyền tham số route dưới dạng props cho component
+      }
+    ]
+  },
 ];
 
 const router = createRouter({

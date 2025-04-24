@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full max-w-7xl mx-auto bg-white shadow-2xl rounded-2xl mt-10 p-6 h-fit">
     <h1>Chi tiết người dùng</h1>
     <div v-if="user">
       <img :src="user.picture.large" alt="Ảnh đại diện" />
