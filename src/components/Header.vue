@@ -52,6 +52,27 @@
           >Movie App</router-link
           >
         </li>
+        <li>
+          <router-link
+              to="/users"
+              class="hover:text-blue-600 transition duration-300"
+          >User Management</router-link
+          >
+        </li>
+        <li>
+          <router-link
+              to="/theme"
+              class="hover:text-blue-600 transition duration-300"
+          >Theme Switch</router-link
+          >
+        </li>
+        <li>
+          <router-link
+              to="/blog"
+              class="hover:text-blue-600 transition duration-300"
+          >Blog</router-link
+          >
+        </li>
       </ul>
     </div>
   </header>
