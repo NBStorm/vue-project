@@ -71,6 +71,4 @@ Thư mục `dist/` sẽ chứa các tệp đã được build sẵn sàng để 
 - [Tài liệu Vite](https://vitejs.dev/guide/)
 - [Tài liệu Tailwind CSS](https://tailwindcss.com/docs)
 
-## 📄 Giấy phép
 
-Dự án này được phát hành dưới giấy phép [MIT](LICENSE).
