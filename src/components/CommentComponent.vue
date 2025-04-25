@@ -1,12 +1,16 @@
 <template>
-  <div class="comment">
-    <div class="comment-header">
-      <div class="comment-info">
-        <span class="comment-author">{{ comment.author }}</span>
-        <span class="comment-date">{{ formatDate(comment.createdAt) }}</span>
+  <div class="comment mb-4 p-4 border border-gray-300 rounded-lg">
+    <div class="comment-header flex items-center mb-2 text-left">
+      <div class="comment-info flex flex-col text-left">
+        <span class="comment-author font-bold text-gray-800">{{
+          comment.author
+        }}</span>
+        <span class="comment-date text-sm text-gray-500">{{
+          formatDate(comment.createdAt)
+        }}</span>
       </div>
     </div>
-    <div class="comment-text">{{ comment.text }}</div>
+    <div class="comment-text text-gray-700 text-left">{{ comment.text }}</div>
   </div>
 </template>
 
@@ -33,40 +37,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.comment {
-  margin-bottom: 16px;
-  padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.comment-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  text-align: left;
-}
-
-.comment-info {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.comment-author {
-  font-weight: bold;
-  color: #333;
-}
-
-.comment-date {
-  font-size: 0.8rem;
-  color: #666;
-}
-
-.comment-text {
-  color: #444;
-  text-align: left;
-}
-</style>

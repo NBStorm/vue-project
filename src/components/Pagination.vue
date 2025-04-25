@@ -1,99 +1,69 @@
 <template>
-    <div class="pagination">
-      <button 
-        class="pagination-button"
-        :disabled="currentPage === 1"
-        @click="$emit('page-changed', currentPage - 1)"
-      >
-        &laquo; Previous
-      </button>
-      
-      <button 
-        v-for="page in pages" 
-        :key="page"
-        class="pagination-button"
-        :class="{ active: page === currentPage }"
-        @click="$emit('page-changed', page)"
-      >
-        {{ page }}
-      </button>
-      
-      <button 
-        class="pagination-button"
-        :disabled="currentPage === totalPages"
-        @click="$emit('page-changed', currentPage + 1)"
-      >
-        Next &raquo;
-      </button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'Pagination',
-    props: {
-      currentPage: {
-        type: Number,
-        required: true
-      },
-      totalPages: {
-        type: Number,
-        required: true
-      },
-      maxVisibleButtons: {
-        type: Number,
-        default: 5
-      }
+  <div class="flex gap-1">
+    <button
+      class="px-4 py-2 border border-gray-300 bg-white text-gray-800 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+      :disabled="currentPage === 1"
+      @click="$emit('page-changed', currentPage - 1)"
+    >
+      &laquo; Previous
+    </button>
+
+    <button
+      v-for="page in pages"
+      :key="page"
+      class="px-4 py-2 border border-gray-300 bg-white text-gray-800 rounded-md transition-all hover:bg-gray-100"
+      :class="{
+        'bg-blue-500 text-white border-blue-500': page === currentPage,
+      }"
+      @click="$emit('page-changed', page)"
+    >
+      {{ page }}
+    </button>
+
+    <button
+      class="px-4 py-2 border border-gray-300 bg-white text-gray-800 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+      :disabled="currentPage === totalPages"
+      @click="$emit('page-changed', currentPage + 1)"
+    >
+      Next &raquo;
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Pagination",
+  props: {
+    currentPage: {
+      type: Number,
+      required: true,
     },
-    computed: {
-      pages() {
-        const range = []
-        const half = Math.floor(this.maxVisibleButtons / 2)
-        let start = Math.max(this.currentPage - half, 1)
-        let end = Math.min(start + this.maxVisibleButtons - 1, this.totalPages)
-        
-        if (end - start + 1 < this.maxVisibleButtons) {
-          start = Math.max(end - this.maxVisibleButtons + 1, 1)
-        }
-        
-        for (let i = start; i <= end; i++) {
-          range.push(i)
-        }
-        
-        return range
+    totalPages: {
+      type: Number,
+      required: true,
+    },
+    maxVisibleButtons: {
+      type: Number,
+      default: 5,
+    },
+  },
+  computed: {
+    pages() {
+      const range = [];
+      const half = Math.floor(this.maxVisibleButtons / 2);
+      let start = Math.max(this.currentPage - half, 1);
+      let end = Math.min(start + this.maxVisibleButtons - 1, this.totalPages);
+
+      if (end - start + 1 < this.maxVisibleButtons) {
+        start = Math.max(end - this.maxVisibleButtons + 1, 1);
       }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  .pagination {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .pagination-button {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    background-color: white;
-    color: #333;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.3s;
-  }
-  
-  .pagination-button:hover:not(:disabled) {
-    background-color: #f0f0f0;
-  }
-  
-  .pagination-button.active {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-  }
-  
-  .pagination-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  </style>
+
+      for (let i = start; i <= end; i++) {
+        range.push(i);
+      }
+
+      return range;
+    },
+  },
+};
+</script>

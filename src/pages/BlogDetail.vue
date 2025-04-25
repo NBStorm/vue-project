@@ -7,37 +7,53 @@
     >
       {{ blog.title }}
     </h1>
-    <button class="back-button" @click="$router.go(-1)">← Back to Blogs</button>
+    <button
+      class="text-blue-500 hover:underline text-lg mb-5"
+      @click="$router.go(-1)"
+    >
+      ← Back to Blogs
+    </button>
 
-    <article class="blog-post">
-      <h1 class="blog-title">{{ blog.title }}</h1>
+    <article class="mb-10">
+      <h2 class="text-2xl mb-2 text-gray-800">{{ blog.title }}</h2>
 
-      <div class="blog-meta">
-        <span class="author">By {{ blog.author }}</span>
-        <span class="date">{{ formatDate(blog.createdAt) }}</span>
+      <div class="flex gap-4 text-gray-600 text-sm mb-5">
+        <span>By {{ blog.author }}</span>
+        <span>{{ formatDate(blog.createdAt) }}</span>
       </div>
 
-      <div class="blog-image" v-if="blog.image">
-        <img :src="blog.image" :alt="blog.title" />
+      <div v-if="blog.image" class="mb-5">
+        <img
+          :src="blog.image"
+          :alt="blog.title"
+          class="w-full max-h-96 object-cover rounded-lg"
+        />
       </div>
 
-      <div class="blog-content" v-html="blog.content"></div>
+      <div class="prose dark:prose-invert" v-html="blog.content"></div>
     </article>
 
-    <section class="comments-section">
-      <h2>Comments ({{ comments.length }})</h2>
+    <section class="border-t border-gray-200 pt-8">
+      <h2 class="text-xl font-semibold mb-5">
+        Comments ({{ comments.length }})
+      </h2>
 
-      <div class="comment-form">
+      <div class="mb-8">
         <textarea
           v-model="newComment"
           placeholder="Add your comment..."
+          class="w-full min-h-[100px] p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></textarea>
-        <button @click="addComment" :disabled="!newComment.trim()">
+        <button
+          @click="addComment"
+          :disabled="!newComment.trim()"
+          class="bg-blue-500 text-white px-4 py-2 rounded-lg disabled:bg-gray-300 disabled:cursor-not-allowed"
+        >
           Post Comment
         </button>
       </div>
 
-      <div class="comments-list">
+      <div>
         <CommentComponent
           v-for="comment in comments"
           :key="comment.id"
@@ -176,118 +192,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.blog-detail {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.back-button {
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  padding: 5px 0;
-}
-
-.back-button:hover {
-  text-decoration: underline;
-}
-
-.blog-post {
-  margin-bottom: 40px;
-}
-
-.blog-title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.blog-meta {
-  display: flex;
-  gap: 15px;
-  color: #666;
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-}
-
-.blog-image img {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.blog-content {
-  line-height: 1.6;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.comments-section {
-  border-top: 1px solid #eee;
-  padding-top: 30px;
-}
-
-.comments-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.comment-form {
-  margin-bottom: 30px;
-}
-
-.comment-form textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  font-family: inherit;
-}
-
-.comment-form button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.comment-form button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-.comment {
-  border-bottom: 1px solid #eee;
-  padding: 15px 0;
-}
-
-.comment:last-child {
-  border-bottom: none;
-}
-
-.comment-author {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.comment-date {
-  color: #666;
-  font-size: 0.8rem;
-  margin-bottom: 10px;
-}
-
-.comment-text {
-  line-height: 1.5;
-}
-</style>
+<style scoped></style>
