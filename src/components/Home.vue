@@ -57,7 +57,13 @@
       >
         User Manager
       </button>
-    </div>
+      <button
+        @click="$router.push('/blogApp')"
+        class="px-6 py-3 bg-amber-700 dark:bg-amber-800 text-white rounded-xl text-lg shadow-md hover:opacity-80 transition-opacity"
+      >
+        Blog App
+      </button>
+    </div>    
   </div>
 </template>
 
