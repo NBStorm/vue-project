@@ -11,9 +11,10 @@
     <button
       v-for="page in pages"
       :key="page"
-      class="px-4 py-2 border border-gray-300 bg-white text-gray-800 rounded-md transition-all hover:bg-gray-100"
+      class="px-4 py-2 border border-gray-300 text-gray-800 rounded-md transition-all hover:bg-gray-100"
       :class="{
-        'bg-blue-500 text-white border-blue-500': page === currentPage,
+        'bg-blue-500 text-white': page === currentPage, // Nút hiện tại có nền xanh
+        'bg-white hover:bg-gray-100': page !== currentPage, // Nút khác có nền trắng
       }"
       @click="$emit('page-changed', page)"
     >
