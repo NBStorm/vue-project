@@ -36,7 +36,7 @@ import { ref, computed, onMounted } from "vue";
 import BlogComponent from "@/components/BlogComponent.vue";
 import Pagination from "@/components/Pagination.vue";
 import { fetchBlogs } from "@/api/blogApi";
-
+import { useRouter } from "vue-router";
 export default {
   name: "BlogApp",
   components: {
@@ -47,7 +47,7 @@ export default {
     const blogs = ref([]);
     const currentPage = ref(1);
     const itemsPerPage = 6;
-
+    const router = useRouter();
     const totalPages = computed(() => {
       return Math.ceil(blogs.value.length / itemsPerPage);
     });
@@ -64,8 +64,7 @@ export default {
     };
 
     const goToBlogDetail = (blogId) => {
-      // Assuming you are using Vue Router
-      window.location.href = `/blog/${blogId}`;
+      router.push(`/blog/${blogId}`); // Use router.push to navigate
     };
 
     onMounted(async () => {
